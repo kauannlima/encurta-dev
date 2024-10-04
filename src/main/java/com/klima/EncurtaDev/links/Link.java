@@ -11,17 +11,17 @@ public class Link {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String longUrl;
-    private String shortenedUrl;
-    private String qrCodeUrl;
-    private LocalDateTime createdAt;
+    private String urlLonga;
+    private String urlEncurtada;
+    private String urlQrCode;
+    private LocalDateTime urlCriadaEm;
 
     public Link(Long id, String longUrl, String shortenedUrl, String qrCodeUrl, LocalDateTime createdAt) {
         this.id = id;
-        this.longUrl = longUrl;
-        this.shortenedUrl = shortenedUrl;
-        this.qrCodeUrl = qrCodeUrl;
-        this.createdAt = createdAt;
+        this.urlLonga = longUrl;
+        this.urlEncurtada = shortenedUrl;
+        this.urlQrCode = qrCodeUrl;
+        this.urlCriadaEm = createdAt;
     }
 
     public Link() {
@@ -35,35 +35,35 @@ public class Link {
         this.id = id;
     }
 
-    public String getLongUrl() {
-        return longUrl;
+    public String getUrlLonga() {
+        return urlLonga;
     }
 
-    public void setLongUrl(String longUrl) {
-        this.longUrl = longUrl;
+    public void setUrlLonga(String urlLonga) {
+        this.urlLonga = urlLonga;
     }
 
-    public String getShortenedUrl() {
-        return shortenedUrl;
+    public String getUrlEncurtada() {
+        return urlEncurtada;
     }
 
-    public void setShortenedUrl(String shortenedUrl) {
-        this.shortenedUrl = shortenedUrl;
+    public void setUrlEncurtada(String urlEncurtada) {
+        this.urlEncurtada = urlEncurtada;
     }
 
-    public String getQrCodeUrl() {
-        return qrCodeUrl;
+    public String getUrlQrCode() {
+        return urlQrCode;
     }
 
-    public void setQrCodeUrl(String qrCodeUrl) {
-        this.qrCodeUrl = qrCodeUrl;
+    public void setUrlQrCode(String urlQrCode) {
+        this.urlQrCode = urlQrCode;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
+    public LocalDateTime getUrlCriadaEm() {
+        return urlCriadaEm;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
+    public void setUrlCriadaEm(LocalDateTime urlCriadaEm) {
+        this.urlCriadaEm = urlCriadaEm;
     }
 }
