@@ -1,5 +1,5 @@
 # Fase de build com Maven e OpenJDK 17
-FROM maven:3.9.2-openjdk-17 AS build
+FROM maven:3.9.2-openjdk-17-slim AS build
 
 # Define o diretório de trabalho para a fase de build
 WORKDIR /app
