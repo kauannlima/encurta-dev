@@ -1,5 +1,11 @@
-# Fase de build com Maven e OpenJDK 17
-FROM maven:3.9.2-openjdk-17-slim AS build
+# Fase de build: OpenJDK 17 e Maven
+FROM openjdk:17-jdk-slim AS build
+
+# Instala o Maven
+RUN apt-get update && \
+    apt-get install -y maven && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # Define o diretório de trabalho para a fase de build
 WORKDIR /app
