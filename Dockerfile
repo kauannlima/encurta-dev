@@ -16,7 +16,7 @@ FROM eclipse-temurin:17-jdk-jammy
 EXPOSE 8080
 
 # Copiar o arquivo WAR da etapa de build
-COPY --from=build /app/target/EncurtaDev-0.0.1-SNAPSHOT.war /app/app.jar
+COPY --from=build /app/target/EncurtaDev-0.0.1-SNAPSHOT.jar /app/app.jar
 
 # Definir o ponto de entrada
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
