@@ -1,36 +1,22 @@
-# Fase de build: OpenJDK 17 e Maven
-FROM openjdk:17-jdk-slim AS build
+FROM maven:3.9.9-eclipse-temurin-17 AS build
 
-# Instala o Maven
-RUN apt-get update && \
-    apt-get install -y maven && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
-# Define o diretório de trabalho para a fase de build
+# Configurar diretório de trabalho
 WORKDIR /app
 
-# Copia o arquivo pom.xml e baixa as dependências
-COPY pom.xml .
-RUN mvn dependency:go-offline
+# Copiar o código-fonte para o container
+COPY . .
 
-# Copia o código-fonte para o contêiner
-COPY src ./src
-
-# Executa o Maven para construir o projeto
+# Construir a aplicação e pular os testes
 RUN mvn clean install -DskipTests
 
-# Fase final: usa uma imagem leve do OpenJDK 17
-FROM openjdk:17-slim
+# Etapa de execução
+FROM eclipse-temurin:17-jdk-jammy
 
-# Define o diretório de trabalho para a execução
-WORKDIR /app
-
-# Expõe a porta em que a aplicação vai rodar
+# Expor a porta que a aplicação usará
 EXPOSE 8080
 
-# Copia o JAR gerado para o contêiner
-COPY --from=build /app/target/EncurtaDev-0.0.1-SNAPSHOT.jar /app/EncurtaDev.jar
+# Copiar o arquivo WAR da etapa de build
+COPY --from=build /app/target/EncurtaDev-0.0.1-SNAPSHOT.war /app/app.jar
 
-# Executa o JAR
-CMD ["java", "-jar", "EncurtaDev.jar"]
+# Definir o ponto de entrada
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
