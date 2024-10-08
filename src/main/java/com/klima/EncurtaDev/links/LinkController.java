@@ -1,5 +1,6 @@
 package com.klima.EncurtaDev.links;
 
+import com.google.zxing.WriterException;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,17 +21,17 @@ public class LinkController {
     private LinkService linkService;
 
     @PostMapping("/encurta-dev")
-    public ResponseEntity<LinkResponse> gerarUrlEncurtada(@RequestBody Map<String, String> request){
+    public ResponseEntity<LinkResponse> gerarUrlEncurtada(@RequestBody Map<String, String> request) throws IOException, WriterException {
 
         String urlOriginal = request.get("urlOriginal");
         Link link = linkService.encurtarUrl(urlOriginal);
 
-     String gerarUrlDeRedirecionamentoDoUsuario = "http://localhost:8080/r/" + link.getUrlEncurtada();
-        //  String gerarUrlDeRedirecionamentoDoUsuario = "https://encurta-dev.onrender.com/r/" + link.getUrlEncurtada();
+        //  String gerarUrlDeRedirecionamentoDoUsuario = "http://localhost:8080/r/" + link.getUrlEncurtada();
+        String gerarUrlDeRedirecionamentoDoUsuario = "https://encurta-dev.onrender.com/r/" + link.getUrlEncurtada();
 
         LinkResponse response = new LinkResponse(
                 gerarUrlDeRedirecionamentoDoUsuario,
-                link.getUrlQrCode()
+                linkService.gerarQrCode(gerarUrlDeRedirecionamentoDoUsuario)
         );
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }

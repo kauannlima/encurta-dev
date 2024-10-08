@@ -25,6 +25,7 @@ public class LinkService {
     public String gerarUrlAleatorio(){
         return RandomStringUtils.randomAlphanumeric(5,10);
     }
+
     // TODO: REFATORAR
     // Codigo da Internet, dois deploy e o codigo quebra
     public String gerarQrCode(String url) throws WriterException, IOException {
@@ -44,14 +45,6 @@ public class LinkService {
         String urlEncurtada = gerarUrlAleatorio();
         link.setUrlEncurtada(urlEncurtada);
         link.setUrlCriadaEm(LocalDateTime.now());
-
-        try {
-            String qrCode = gerarQrCode(urlEncurtada);
-            link.setUrlQrCode(qrCode);
-        } catch (WriterException | IOException e) {
-            // Tratar erro na geração do QR Code, se necessário
-            link.setUrlQrCode("Erro ao gerar QR Code");
-        }
 
         return linkRepository.save(link);
     }
