@@ -1,11 +1,19 @@
 package com.klima.EncurtaDev.links;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "links")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Link {
 
     @Id
@@ -13,57 +21,9 @@ public class Link {
     private Long id;
     private String urlLonga;
     private String urlEncurtada;
+    @Column(length = 500)
     private String urlQrCode;
     private LocalDateTime urlCriadaEm;
 
-    public Link(Long id, String longUrl, String shortenedUrl, String qrCodeUrl, LocalDateTime createdAt) {
-        this.id = id;
-        this.urlLonga = longUrl;
-        this.urlEncurtada = shortenedUrl;
-        this.urlQrCode = qrCodeUrl;
-        this.urlCriadaEm = createdAt;
-    }
 
-    public Link() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUrlLonga() {
-        return urlLonga;
-    }
-
-    public void setUrlLonga(String urlLonga) {
-        this.urlLonga = urlLonga;
-    }
-
-    public String getUrlEncurtada() {
-        return urlEncurtada;
-    }
-
-    public void setUrlEncurtada(String urlEncurtada) {
-        this.urlEncurtada = urlEncurtada;
-    }
-
-    public String getUrlQrCode() {
-        return urlQrCode;
-    }
-
-    public void setUrlQrCode(String urlQrCode) {
-        this.urlQrCode = urlQrCode;
-    }
-
-    public LocalDateTime getUrlCriadaEm() {
-        return urlCriadaEm;
-    }
-
-    public void setUrlCriadaEm(LocalDateTime urlCriadaEm) {
-        this.urlCriadaEm = urlCriadaEm;
-    }
 }
