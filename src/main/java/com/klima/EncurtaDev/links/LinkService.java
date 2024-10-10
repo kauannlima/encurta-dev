@@ -39,14 +39,19 @@ public class LinkService {
         return Base64.getEncoder().encodeToString(pngData);
     }
 
-    public Link encurtarUrl(String urlOriginal){
+    public Link encurtarUrl(String urlOriginal) throws IOException, WriterException {
         Link link = new Link();
         link.setUrlLonga(urlOriginal);
         String urlEncurtada = gerarUrlAleatorio();
         link.setUrlEncurtada(urlEncurtada);
+        link.setUrlQrCode(gerarQrCode(gerarUrlDeRedirecionamentoDoUsuario("http://localhost:8080/r/", link.getUrlEncurtada())));
         link.setUrlCriadaEm(LocalDateTime.now());
 
         return linkRepository.save(link);
+    }
+
+    public String gerarUrlDeRedirecionamentoDoUsuario(String urlRaiz, String urlEncurtada){
+        return urlRaiz + urlEncurtada;
     }
 
     public Link findByUrlEncurtada(String urlEncurtada){

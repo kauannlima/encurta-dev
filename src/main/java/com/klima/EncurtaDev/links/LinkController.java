@@ -26,13 +26,13 @@ public class LinkController {
         String urlOriginal = request.get("urlOriginal");
         Link link = linkService.encurtarUrl(urlOriginal);
 
-     String gerarUrlDeRedirecionamentoDoUsuario = "http://localhost:8080/r/" + link.getUrlEncurtada();
-        //     String gerarUrlDeRedirecionamentoDoUsuario = "https://encurta-dev.onrender.com/r/" + link.getUrlEncurtada();
+
 
         LinkResponse response = new LinkResponse(
-                gerarUrlDeRedirecionamentoDoUsuario,
-                linkService.gerarQrCode(gerarUrlDeRedirecionamentoDoUsuario)
+                linkService.gerarUrlDeRedirecionamentoDoUsuario("http://localhost:8080/r/", link.getUrlEncurtada()),
+                link.getUrlQrCode()
         );
+
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
     @GetMapping("/r/{urlEncurtada}")

@@ -21,7 +21,7 @@ public class Link {
     private Long id;
     private String urlLonga;
     private String urlEncurtada;
-    @Column(length = 500)
+    @Column(length = 1000)
     private String urlQrCode;
     private LocalDateTime urlCriadaEm;
 
