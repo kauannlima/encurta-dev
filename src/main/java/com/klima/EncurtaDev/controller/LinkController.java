@@ -32,7 +32,7 @@ public class LinkController {
 
 
         LinkResponse response = new LinkResponse(
-                linkService.gerarUrlDeRedirecionamentoDoUsuario("https://encurta-dev.onrender.com/r/", link.getUrlEncurtada()),
+                linkService.gerarUrlDeRedirecionamentoDoUsuario("https://encurta-dev-front-klima.vercel.app/r/", link.getUrlEncurtada()),
               //linkService.gerarUrlDeRedirecionamentoDoUsuario("http://localhost:8080/r/", link.getUrlEncurtada()),
                 link.getUrlQrCode()
         );

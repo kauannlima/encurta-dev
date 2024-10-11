@@ -45,7 +45,7 @@ public class LinkService {
         String urlEncurtada = gerarUrlAleatorio();
         link.setUrlEncurtada(urlEncurtada);
       //link.setUrlQrCode(gerarQrCode(gerarUrlDeRedirecionamentoDoUsuario("http://localhost:8080/r/", link.getUrlEncurtada())));
-        link.setUrlQrCode(gerarQrCode(gerarUrlDeRedirecionamentoDoUsuario("https://encurta-dev.onrender.com/r/", link.getUrlEncurtada())));
+        link.setUrlQrCode(gerarQrCode(gerarUrlDeRedirecionamentoDoUsuario("https://encurta-dev-front-klima.vercel.app/r/", link.getUrlEncurtada())));
         link.setUrlCriadaEm(LocalDateTime.now());
 
         return linkRepository.save(link);
