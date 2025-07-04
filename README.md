@@ -13,7 +13,6 @@ Este é o repositório do back-end da aplicação **EncurtaDev**, responsável p
 
 - **Java** com **Spring Boot**
 - **MySQL** para persistência de dados
-- **Spring Security** para autenticação e autorização
 - **Flyway** para controle de migrações de banco de dados
 
 ## Link para o site em produção
