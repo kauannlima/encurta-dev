@@ -18,3 +18,5 @@ Este é o repositório do back-end da aplicação **EncurtaDev**, responsável p
 ## Link para o site em produção
 
 Acesse a aplicação em produção: [EncurtaDev](https://encurta-dev-front-klima.vercel.app/)
+
+⚠️ O primeiro acesso pode levar alguns segundos devido à hibernação da hospedagem gratuita.
